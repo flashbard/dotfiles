@@ -1,5 +1,8 @@
 " init.vim
+" goals:
 " keep it compatible between vim and neovim
+" avoid plugins, unless unavoidable
+" document everything
 
 " vim-plug plugins
 call plug#begin()
@@ -13,6 +16,7 @@ set nocompatible	        " disable compatibility with vi
 set encoding=utf-8
 
 " editor settings
+" adapted from https://medium.com/geekculture/neovim-configuration-for-beginners-b2116dbbde84
 set showmatch               " show matching
 set ignorecase              " case insensitive
 set hlsearch                " highlight search
@@ -22,7 +26,7 @@ set softtabstop=4           " see multiple spaces as tabstops so <BS> does the r
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for auto-indents
 set autoindent              " indent a new line the same amount as the line just typed
-set number 			        " add line numbers
+set number                  " add line numbers
 set relativenumber          " display relative line numbers
 set cc=120                  " set an 120 column border for good coding style
 set cursorline              " highlight current cursor line
@@ -47,7 +51,9 @@ set termguicolors
 colorscheme base16-ocean
 
 " custom commands
+" make vim background transparent
 :command BgAlpha hi Normal guibg=None ctermbg=None
+" make tags for code jumping
 :command MakeTags !ctags -R .
 
 " statusline config
@@ -57,11 +63,13 @@ function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
+" get git branch name if applicable
 function! StatuslineGit()
   let l:branchname = GitBranch()
   return strlen(l:branchname) > 0?'   '.l:branchname.' ':''
 endfunction
 
+" get virtualenv name if applicable
 function StatuslineVenv()
   let l:venvname = system("basename $VIRTUAL_ENV 2> /dev/null | tr -d '\n'")
   return strlen(l:venvname) > 0?'   '.l:venvname.' ':''
