@@ -64,7 +64,7 @@ endfunction
 
 function StatuslineVenv()
   let l:venvname = system("basename $VIRTUAL_ENV 2> /dev/null | tr -d '\n'")
-  return strlen(l:venvname) > 0?' '.l:venvname.' ':''
+  return strlen(l:venvname) > 0?'   '.l:venvname.' ':''
 endfunction
 
 " draw statusline
