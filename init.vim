@@ -8,6 +8,9 @@
 call plug#begin()
 " vim themes
 Plug 'chriskempson/base16-vim'
+
+" python features
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " vim config
