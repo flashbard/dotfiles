@@ -11,7 +11,12 @@ Plug 'chriskempson/base16-vim'
 
 " python features
 Plug 'davidhalter/jedi-vim'
+
+" zettelkasten
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
+
 
 " vim config
 " basics
@@ -97,4 +102,8 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
+
+" force vimwiki to use markdown
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
