@@ -15,6 +15,9 @@ Plug 'davidhalter/jedi-vim'
 " zettelkasten
 Plug 'vimwiki/vimwiki'
 
+" fuzzy finder 
+Plug 'ctrlpvim/ctrlp.vim'
+
 call plug#end()
 
 
@@ -104,6 +107,14 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 
 " force vimwiki to use markdown
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/'}, 
+    \ {
+    \ 'path': '~/zettelkasten/', 
+    \ 'path_html': '~/zettelkasten/html/',
+    \ 'name': 'zettelkasten',
+    \ 'auto_tags': 1,
+    \ 'auto_export': 1,
+    \ 'exclude_files': ['**/.gitignore', '**/README.md']
+    \ }]
+
 
